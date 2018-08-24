@@ -1,2 +1,2 @@
 # internet-explorer
-The internet-explorer
+The Internet Explorer

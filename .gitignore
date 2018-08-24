@@ -1,0 +1,33 @@
+/target
+/classes
+/checkouts
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+/.lein-*
+/.nrepl-port
+.hgignore
+.hg/
+*.swp
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+.terraform/
+
+*.orig
+
+/resources/public/js/development
+/resources/public/js/release
+/resources/private/development-db
+/private
+
+profiles.clj
+
+figwheel_server.log
+.rebel_readline_history

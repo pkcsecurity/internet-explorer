@@ -8,11 +8,13 @@
             [internet-explorer.clj.routes.middleware :as middleware]
             [internet-explorer.clj.routes.blog :as blog]
             [internet-explorer.clj.routes.account :as account]
+            [internet-explorer.clj.routes.slack :as slack]
             [internet-explorer.clj.views.core :as views]
             [internet-explorer.cljc.routes :as routing]
             [internet-explorer.cljc.validators :as v]
             [compojure.core :as r]
             [compojure.route :as route]
+            [ring.middleware.params :as params]
             [clojure.string :as s]
             [environ.core :as environ]))
 
@@ -23,7 +25,9 @@
    :blog blog/blog-entries
    :blog-entry blog/blog-entry
    :new-blog-entry blog/new-blog-entry
-   :delete-blog-entry blog/delete-blog-entry})
+   :delete-blog-entry blog/delete-blog-entry
+   :action slack/action
+   :start slack/start})
 
 (defn page-handler [request handler-name]
       {:status  200
@@ -59,5 +63,8 @@
       (middleware/wrap-bidi routing/api-routes api-view)
       (json/wrap-json-response)
       (json/wrap-json-body {:keywords? true})
+      (params/wrap-params)
       (roles/wrap-security)
       (ct/wrap-content-type)))
+
+
